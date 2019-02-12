@@ -1,0 +1,49 @@
+<style>
+  @font-face {
+    font-family: "ITMO Muller Regular";
+    src: url('../../../../public/bootstrap-3.3.7/fonts/MullerRegular.ttf');
+  }
+  @font-face {
+    font-family: "ITMO Muller Black";
+    src: url('../../../../public/bootstrap-3.3.7/fonts/MullerBlack.ttf');
+  }
+  h3{
+    font-family: "ITMO Muller Black", serif;
+  }
+    .row{
+      font-family: "ITMO Muller Regular", serif;
+      font-size: 20px;
+    }
+    .list-group-item{
+      height: 50px;
+    }
+</style>
+
+<div class="container-fluid">
+
+  <div class="row page-title">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <a href="<%= Rho::Application.startURI %>" class="btn btn-default btn-sm pull-left">Home</a>
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <h3 class="text-center">Дисциплины</h3>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <a href="<%= url_for :action => :new %>" class="btn btn-primary btn-sm pull-right">New</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="list-group">
+      <% @sports.each do |sport| %>
+      
+          <a href="<%= url_for :action => :show, :id => sport.object %>" class="list-group-item">
+            <span class="glyphicon glyphicon-chevron-right pull-right" aria-hidden="true"></span>
+            <%= sport.name %>
+          </a>
+      
+      <% end %>
+    </div>
+  </div>
+
+</div>

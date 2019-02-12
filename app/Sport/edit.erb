@@ -1,0 +1,47 @@
+<div class="container-fluid">
+
+  <div class="row page-title">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <a href="<%= url_for :action => :show, :id => @sport.object %>" class="btn btn-default btn-sm pull-left">Cancel</a>
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <h3 class="text-center">Edit <%= @sport.id %></h3>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <a href="<%= url_for :action => :delete, :id => @sport.object %>" class="btn btn-danger btn-sm pull-right">Delete</a>
+    </div>
+  </div>
+
+  <form method="POST" action="<%= url_for :action => :update %>">
+    <input type="hidden" name="id" value="<%= @sport.object %>"/>
+
+    
+        <div class="form-group">
+          <label for="sport[id]">Id</label>
+          <input type="text" id="sport[id]" name="sport[id]" value="<%= @sport.id %>" <%= placeholder( "Id" ) %> class="form-control" />
+        </div>
+    
+        <div class="form-group">
+          <label for="sport[name]">Name</label>
+          <input type="text" id="sport[name]" name="sport[name]" value="<%= @sport.name %>" <%= placeholder( "Name" ) %> class="form-control" />
+        </div>
+    
+        <div class="form-group">
+          <label for="sport[desc]">Desc</label>
+          <input type="text" id="sport[desc]" name="sport[desc]" value="<%= @sport.desc %>" <%= placeholder( "Desc" ) %> class="form-control" />
+        </div>
+    
+        <div class="form-group">
+          <label for="sport[photo]">Photo</label>
+          <input type="text" id="sport[photo]" name="sport[photo]" value="<%= @sport.photo %>" <%= placeholder( "Photo" ) %> class="form-control" />
+        </div>
+    
+        <div class="form-group">
+          <label for="sport[likes]">Likes</label>
+          <input type="text" id="sport[likes]" name="sport[likes]" value="<%= @sport.likes %>" <%= placeholder( "Likes" ) %> class="form-control" />
+        </div>
+    
+    <button type="submit" class="btn btn-success btn-block">Update</button>
+  </form>
+
+</div>
