@@ -72,8 +72,11 @@
             padding-left:30px;
           }
           .footer{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
             height:30px;
-            width:auto;
             background-color: #1D2C4A;
 
           }
@@ -86,8 +89,13 @@
             height:270px;
 
           }
-          a{
+          a,p{
             margin-left: 35px;
+            color: black;
+          }
+
+          a:hover{
+            color:#1D2C4A;
           }
           i{
             font-size: 25px;
@@ -107,7 +115,7 @@
     <a href="index.erb" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >На&nbspглавную</a>
     <a href="https://isu.ifmo.ru/pls/apex/f?p=2143:LOGIN:116914021916965" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Личный&nbspкабинет</a>
     <a href="Sport" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >Дисциплины</a>
-    <a href="?"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Персоналии</a>
+    <a href="<%= url_for :model => :Contacts,:action => :person %>"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Персоналии</a>
     <a href="#"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Расписание</a>
     <a href="Contacts" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Контакты</a>
 
@@ -115,7 +123,7 @@
   </div>
   <script>
       function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
+          document.getElementById("mySidenav").style.width = "280px";
       }
 
       function closeNav() {
@@ -129,22 +137,38 @@
 
 
 <div class="info">
-  <h3>Ваше расписание:</h3>
+  <h3>Как с нами связаться:</h3>
 </div>
 <div class="content">
-  <table class="main_table" cellpadding="15px" e>
+  <table class="main_table" cellpadding="15px" >
+
+
     <tr>
       <td><i class="fab fa-instagram"></i></td>
       <td><a href="https://instagram.com/kronbars" >Наш Instagram</a></td>
+      <td>
+
+      </td>
     </tr>
     <tr>
       <td><i class="fab fa-vk"></i></td>
       <td><a href="https://vk.com/kronbars" >Мы Vkontakte</a></td>
+      <td></td>
     </tr>
     <tr>
       <td><i class="fab fa-facebook-square"></i></td>
       <td><a href="https://m.facebook.com/kronbars" >Наш Facebook</a></td>
+
     </tr>
+    <tr>
+      <td><i class="fa fa-phone" aria-hidden="true"></i></td>
+      <td  style="padding-left: 30px;" >+7 (812) 575-69-05</td>
+    </tr>
+    <tr>
+      <td> <i class="fa fa-map-marker" aria-hidden="true"></i></td>
+      <td  style="padding-left: 30px;" >ул. Ломоносова, 9, каб. 4401</td>
+    </tr>
+
 
 
 

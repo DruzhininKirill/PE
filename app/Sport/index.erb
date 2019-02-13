@@ -1,49 +1,253 @@
-<style>
-  @font-face {
-    font-family: "ITMO Muller Regular";
-    src: url('../../../../public/bootstrap-3.3.7/fonts/MullerRegular.ttf');
-  }
-  @font-face {
-    font-family: "ITMO Muller Black";
-    src: url('../../../../public/bootstrap-3.3.7/fonts/MullerBlack.ttf');
-  }
-  h3{
-    font-family: "ITMO Muller Black", serif;
-  }
-    .row{
-      font-family: "ITMO Muller Regular", serif;
-      font-size: 20px;
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+  <style>
+
+    @font-face {
+      font-family: "ITMO Muller Regular";
+      src: url('../../../../public/bootstrap-3.3.7/fonts/MullerRegular.ttf');
     }
-    .list-group-item{
-      height: 50px;
+    @font-face {
+      font-family: "ITMO Muller Black";
+      src: url('../../../../public/bootstrap-3.3.7/fonts/MullerBlack.ttf');
     }
-</style>
+    body {
+      font-family: "ITMO Muller Regular";
 
-<div class="container-fluid">
+    }
 
-  <div class="row page-title">
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a href="<%= Rho::Application.startURI %>" class="btn btn-default btn-sm pull-left">Home</a>
-    </div>
-    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-      <h3 class="text-center">Дисциплины</h3>
-    </div>
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a href="<%= url_for :action => :new %>" class="btn btn-primary btn-sm pull-right">New</a>
-    </div>
-  </div>
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #1D2C4A;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
 
-  <div class="row">
-    <div class="list-group">
-      <% @sports.each do |sport| %>
-      
-          <a href="<%= url_for :action => :show, :id => sport.object %>" class="list-group-item">
-            <span class="glyphicon glyphicon-chevron-right pull-right" aria-hidden="true"></span>
-            <%= sport.name %>
-          </a>
-      
-      <% end %>
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+    .header{
+      background-color: #1D2C4A;
+      height:120px;
+      padding: 15px;
+    }
+    h2{
+
+    }
+    h3{
+      font-family: ITMO Muller Black;
+      margin-left: 30px;
+    }
+    .content{
+      height:100%;
+      width: auto;
+      padding:15px;
+      padding-left:30px;
+    }
+    .footer{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height:30px;
+      background-color: #1D2C4A;
+
+    }
+    .info{
+      height:50px;
+      width: auto;
+    }
+    .main_table{
+      width: auto;
+      height:270px;
+
+    }
+    a{
+      margin-left: 35px;
+      color: black;
+    }
+    a:hover{
+      color:#1D2C4A;
+    }
+
+    i{
+      font-size: 25px;
+    }
+
+
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+  </style>
+  <!-- </head> -->
+<body>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="../index.erb" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >На&nbspглавную</a>
+  <a href="https://isu.ifmo.ru/pls/apex/f?p=2143:LOGIN:116914021916965" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Личный&nbspкабинет</a>
+  <a href="Sport" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >Дисциплины</a>
+  <a href="<%= url_for :model => :Contacts,:action => :person %>"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Персоналии</a>
+  <a href="#"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Расписание</a>
+  <a href="Contacts" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Контакты</a>
+
+  <a href="http://www.ifmo.ru/ru/"><img style="width: 250px; height: 80px;margin-left:-35px;" src="image/slogan_r.png"></a>
+</div>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "280px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+<div class="header">
+  <span style="font-size:30px;cursor:pointer;margin:15px;color:white;background-color:#1D2C4A;float:left;" onclick="openNav()">&#9776;</span>
+  <h2 style="align:center; font-family: ITMO Muller Black;color: white;font-size: 30px;margin-top: 20px;" >Дисциплины</h2>
+</div>
+
+
+<div class="info">
+
+</div>
+<div class="content">
+  <div class="accordion" id="accordionExample" style="margin-right: 15px;">
+    <div class="card">
+      <button class=" btn btn-light collapsed " style="padding: 0;margin-bottom: -2px;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        <div class="card-header "  id="headingOne" style="margin: 0;">
+          <h4 class="mb-0">
+
+            Вяземский переулок, д. 5/7
+
+          </h4>
+        </div>
+      </button>
+
+      <div id="collapseOne" style="padding: 0px;"class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="">
+        <div class="card-body" style="padding: 0px;">
+          <div class="card" style="width: 100%;margin: 0px;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Мини-футбол </li>
+              <li class="list-group-item">Баскетбол</li>
+              <li class="list-group-item">Волейбол</li>
+              <li class="list-group-item">Легкая атлетика</li>
+              <li class="list-group-item">Физическая культура</li>
+              <li class="list-group-item">Бадминтон</li>
+              <li class="list-group-item">Настольный теннис</li>
+              <li class="list-group-item">Скалолазание</li>
+              <li class="list-group-item">Алтимат-фрисби</li>
+              <li class="list-group-item">Художественная гимнастика</li>
+              <li class="list-group-item">Большой теннис</li>
+              <li class="list-group-item">Спортивное ориентирование</li>
+              <li class="list-group-item">Каратэ</li>
+              <li class="list-group-item">Мини-футбол (ж)</li>
+              <li class="list-group-item">Спортивный туризм</li>
+              <li class="list-group-item">Регби-7</li>
+              <li class="list-group-item">Фитнес</li>
+              <li class="list-group-item">Физическая культура</li>
+              <li class="list-group-item">Адаптивная и лечебная физическая культура</li>
+              <li class="list-group-item">Гиревой спорт</li>
+              <li class="list-group-item">Бокс</li>
+              <li class="list-group-item">Фитнес</li>
+              <li class="list-group-item">Фитбоксинг</li>
+              <li class="list-group-item">Дартс</li>
+              <li class="list-group-item">Бильярд</li>
+              <li class="list-group-item">Шашки</li>
+              <li class="list-group-item">Шахматы</li>
+              <li class="list-group-item">Йога (аштанга-йога)</li>
+              <li class="list-group-item">Современные танцы</li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <button class=" btn btn-light collapsed " style="padding: 0;margin-bottom: -2px;" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <div class="card-header "  id="headingTwo" style="margin: 0;">
+          <h4 class="mb-0">
+
+            ул. Ломоносова, д. 9
+
+          </h4>
+        </div>
+      </button>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <button class=" btn btn-light collapsed " style="padding: 0;margin-bottom: -2px;" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+      <div class="card-header "  id="headingThree" style="margin: 0;">
+        <h4 class="mb-0">
+
+            Альпийский переулок, д. 15, к. 2, лит. А
+
+        </h4>
+      </div>
+      </button>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <button class=" btn btn-light collapsed " style="padding: 0;margin-bottom: -2px;color:black;text-underline: none;" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <div class="card-header "  id="headingFour" style="margin: 0;">
+          <h4 class="mb-0">
+
+            Другие спортивные объекты
+
+          </h4>
+        </div>
+      </button>
+      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
     </div>
   </div>
 
 </div>
+
+</body>
+<div class="footer">
+
+</div>
+</html>

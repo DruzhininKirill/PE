@@ -10,10 +10,6 @@ class SportController < Rho::RhoController
     render :back => '/app'
   end
 
-  def contacts
-    render  :action => :contacts
-  end
-
   # GET /Sport/{1}
   def show
     @sport = Sport.find(@params['id'])
@@ -57,8 +53,6 @@ class SportController < Rho::RhoController
   def delete
     @sport = Sport.find(@params['id'])
     @sport.destroy if @sport
-    redirect :action => :index
+    redirect :action => :index  
   end
-
-
 end

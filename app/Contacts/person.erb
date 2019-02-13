@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+
+  <style>
+
+    @font-face {
+      font-family: "ITMO Muller Regular";
+      src: url('../../../../public/bootstrap-3.3.7/fonts/MullerRegular.ttf');
+    }
+    @font-face {
+      font-family: "ITMO Muller Black";
+      src: url('../../../../public/bootstrap-3.3.7/fonts/MullerBlack.ttf');
+    }
+    body {
+      font-family: "ITMO Muller Regular";
+
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #1D2C4A;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+    .header{
+      background-color: #1D2C4A;
+      height:120px;
+      padding: 15px;
+    }
+    h2{
+      font-family: ITMO Muller Black;
+      color: white;
+    }
+    h3{
+      font-family: ITMO Muller Black;
+      margin-left: 30px;
+    }
+    h4{
+      font-size:18px;
+    }
+    .content{
+      height:100%;
+      width: auto;
+      padding:15px;
+      padding-left:30px;
+    }
+    .footer{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height:30px;
+      background-color: #1D2C4A;
+
+    }
+    .info{
+      height:50px;
+      width: auto;
+    }
+    .main_table{
+      width: auto;
+      height:270px;
+
+    }
+    a,p{
+      margin-left: 35px;
+      color: black;
+    }
+
+    a:hover{
+      color:#1D2C4A;
+    }
+    i{
+      font-size: 25px;
+    }
+
+
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+  </style>
+  <!-- </head> -->
+<body>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="../index.erb" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >На&nbspглавную</a>
+  <a href="https://isu.ifmo.ru/pls/apex/f?p=2143:LOGIN:116914021916965" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Личный&nbspкабинет</a>
+  <a href="../Sport" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >Дисциплины</a>
+  <a href=""onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Персоналии</a>
+  <a href="#"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Расписание</a>
+  <a href="../Contacts" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Контакты</a>
+
+  <a href="http://www.ifmo.ru/ru/"><img style="width: 250px; height: 80px;margin-left:-35px;" src="../image/slogan_r.png"></a>
+</div>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "280px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+<div class="header">
+  <span style="font-size:30px;cursor:pointer;margin:15px;color:white;background-color:#1D2C4A;float:left;" onclick="openNav()">&#9776;</span>
+  <h2 style="align:center; font-family: ITMO Muller Black;color: white;font-size: 30px;margin-top: 20px;" >Персоналии</h2>
+</div>
+
+
+<div class="info">
+  <h3 style="font-size: 25px;margin-top: 20px;">Наши преподаватели:</h3>
+</div>
+<div class="content">
+  <div class="card border-secondary mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="../image/ivanov.jpeg" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h4 class="card-title">Иванов С.Е.</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+<div class="footer">
+
+</div>
+</html>

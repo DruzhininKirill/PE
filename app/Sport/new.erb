@@ -11,7 +11,9 @@
     </div>
   </div>
 
-  <form method="POST" action="<%= url_for :action => :create %>">
+
+  <form method="POST" action="https://calm-brook-51137.herokuapp.com/sport/">
+
     <input type="hidden" name="id" value="<%= @sport.object %>"/>
 
     
@@ -28,25 +30,20 @@
         </div>
     
         <div class="form-group">
-          <label for="sport[desc]">Desc</label>
-          <input type="text" id="sport[desc]" name="sport[desc]" <%=
-          placeholder("Desc") %> class="form-control" />
-        </div>
-    
-        <div class="form-group">
           <label for="sport[photo]">Photo</label>
           <input type="text" id="sport[photo]" name="sport[photo]" <%=
           placeholder("Photo") %> class="form-control" />
         </div>
     
         <div class="form-group">
-          <label for="sport[likes]">Likes</label>
-          <input type="text" id="sport[likes]" name="sport[likes]" <%=
-          placeholder("Likes") %> class="form-control" />
+          <label for="sport[desc]">Desc</label>
+          <input type="text" id="sport[desc]" name="sport[desc]" <%=
+          placeholder("Desc") %> class="form-control" />
         </div>
-    
+
 
     <button type="submit" class="btn btn-success btn-block">Create</button>
-  </form>
 
+  </form>
+  {% csrf_token %}
 </div>

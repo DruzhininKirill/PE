@@ -1,43 +1,65 @@
-<style>
-.css-adaptive {
-display: block;
-max-width: 100%;
-height: auto;
-  font-family: "Muller Regular";
-}
-h3{
-      font-family: Muller Black;
-    }
-.textblock{
-  margin-right: 5px;
-  margin-left: 5px;
-  font-family: "Muller Regular";
-}
-</style>
-<script>
-  function  like(){
-      <%=@sport.update_attributes likes: +1 %>
-  }
-</script>
-
 <div class="container-fluid">
 
   <div class="row page-title">
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a href="<%= url_for :action => :index %>" class="btn btn-default btn-sm pull-left">Назад</a>
+      <a href="<%= url_for :action => :index %>" class="btn btn-default btn-sm pull-left">Back</a>
     </div>
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-      <h3 class="text-center" ><%= @sport.name %></h3>
+      <h3 class="text-center"><%= @sport.id %></h3>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
       <a href="<%= url_for :action => :edit, :id => @sport.object %>" class="btn btn-primary btn-sm pull-right">Edit</a>
     </div>
-  </div >
-</div>
-<div class="textblock" >
-  <%= @sport.desc %>
-  <img  src="<%= "../image/"+ @sport.photo %>" class="css-adaptive">
-  <span onclick="like()" class="glyphicon glyphicon-heart pull-left" aria-hidden="true" style="margin-left: 20px;margin-top: 20px; font-size: 30px">
-     <strong> <%= @sport.likes %></strong> </span>
+  </div>
+
+  <div class="row">
+    <ul class="list-group">
+      
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <span pull-right><strong>Id</strong></span>
+              </div>
+              <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <%= @sport.id %>
+              </div>
+            </div>
+          </li>
+      
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <span pull-right><strong>Name</strong></span>
+              </div>
+              <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <%= @sport.name %>
+              </div>
+            </div>
+          </li>
+      
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <span pull-right><strong>Photo</strong></span>
+              </div>
+              <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <%= @sport.photo %>
+              </div>
+            </div>
+          </li>
+      
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <span pull-right><strong>Desc</strong></span>
+              </div>
+              <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <%= @sport.desc %>
+              </div>
+            </div>
+          </li>
+      
+    </ul>
+  </div>
 
 </div>
