@@ -1,7 +1,7 @@
 ## Note: sdk is full path to Rhodes root. If not defined - automatically find latest installed Rhodes gem
 #sdk: "C:/RhoMobileSuite6.1/ruby/lib/ruby/gems/2.3.0/gems/rhodes-6.1"
 sdkversion: 6.0.0
-name: PysicalEducation
+name: ITMO PE
 version: 1.0
 vendor: rhomobile
 ## Note: rho_app_id send to RhoConnect server for identify application (used in multi-push configuration only)
@@ -125,7 +125,7 @@ win32:
   deploymsvc: 1
 
 extensions:
-  - net-http
+  ["net-http", "thread", "timeout", "uri"]
 
 
 rhobundle:

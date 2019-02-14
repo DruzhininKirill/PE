@@ -1,31 +1,159 @@
-<div class="container-fluid">
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <style>
 
-  <div class="row page-title">
+    @font-face {
+      font-family: "ITMO Muller Regular";
+      src: url('../../../../public/bootstrap-3.3.7/fonts/MullerRegular.ttf');
+    }
 
-    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-      <h3 class="text-center">New </h3>
-    </div>
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    </div>
+    @font-face {
+      font-family: "ITMO Muller Black";
+      src: url('../../../../public/bootstrap-3.3.7/fonts/MullerBlack.ttf');
+    }
+
+    body {
+      font-family: "ITMO Muller Regular";
+      background-color: #1D2C4A;
+
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #1D2C4A;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    .header {
+      background-color: #1D2C4A;
+      height: 120px;
+      padding: 15px;
+    }
+
+    h2 {
+      font-family: ITMO Muller Black;
+      color: white;
+    }
+
+    h3 {
+      font-family: ITMO Muller Black;
+      margin-left: 30px;
+    }
+
+    h4 {
+      font-size: 18px;
+    }
+
+    .content {
+      height: 1000px;
+      width: auto;
+      padding: 15px;
+      padding-left: 30px;
+    }
+
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 30px;
+      background-color: #1D2C4A;
+
+    }
+
+    .info {
+      height: 50px;
+      width: auto;
+    }
+
+    .main_table {
+      width: auto;
+      height: 270px;
+
+    }
+
+    a, p {
+
+      color: black;
+    }
+
+    a:hover {
+      color: #1D2C4A;
+    }
+
+    i {
+      font-size: 25px;
+    }
+
+
+
+
+
+    @media screen and (max-height: 450px) {
+      .sidenav {
+        padding-top: 15px;
+      }
+
+      .sidenav a {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+
+
+<!--<form method="POST" action="https://calm-brook-51137.herokuapp.com/sport/">-->
+  <div class="card bg-light" style="border-radius: 20px; padding: 20px; max-width: 200px;max-height:200px;position: absolute;top:20%;left:20%;">
+
+    <form class="" method="POST" style="max-width: 150px;" action="<%= url_for :model => :Main, :action => :auth %>">
+      <div class="form-group" >
+        <label >Логин</label>
+        <input type="text" id="login" name="login" class="form-control" placeholder="Логин"/>
+      </div>
+      <div class="form-group">
+        <label>Пароль</label>
+        <input type="text" id="password" name="password" class="form-control" placeholder="Пароль"/>
+      </div>
+      <button type="submit" style="width: 100%;" class="btn btn-danger">Войти</button>
+    </form>
+    <a href="Main" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Контакты</a>
   </div>
 
-
-<!--  <form method="POST" action="https://calm-brook-51137.herokuapp.com/sport/">-->
-    <form method="POST" action="<%= url_for :model => :Main, :action => :auth %>">
-
-    <div class="form-group">
-      <label for="id">Login</label>
-      <input type="text" id="login" name="login" class="form-control" />
-    </div>
-
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="text" id="password" name="password"  class="form-control" />
-    </div>
-
-
-    <button type="submit" class="btn btn-success btn-block">Create</button>
-
-  </form>
-  <a href="Main" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Контакты</a>
-</div>
+</body>
