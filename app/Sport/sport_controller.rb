@@ -3,7 +3,6 @@ require 'helpers/browser_helper'
 
 class SportController < Rho::RhoController
   include BrowserHelper
-
   # GET /Sport
   def index
     @sports = Sport.find(:all)

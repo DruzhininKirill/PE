@@ -124,7 +124,9 @@ win32:
   deployqt: 1
   deploymsvc: 1
 
-extensions: []
+extensions:
+  - net-http
+
 
 rhobundle:
   exclude_items:

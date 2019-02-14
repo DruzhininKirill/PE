@@ -10,6 +10,5 @@ class AppApplication < Rho::RhoApplication
     super
 
 
-    
   end
 end

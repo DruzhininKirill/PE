@@ -4,8 +4,6 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
-
   <style>
 
     @font-face {
@@ -67,9 +65,6 @@
       font-family: ITMO Muller Black;
       margin-left: 30px;
     }
-    h4{
-      font-size:18px;
-    }
     .content{
       height:100%;
       width: auto;
@@ -95,8 +90,11 @@
 
     }
     a,p{
-      margin-left: 35px;
+
       color: black;
+    }
+    td{
+      padding-right: 35px;
     }
 
     a:hover{
@@ -117,18 +115,18 @@
 <body>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="../index.erb" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >На&nbspглавную</a>
+  <a href="<%= url_for :model => :Main, :action => :index %>" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >На&nbspглавную</a>
   <a href="https://isu.ifmo.ru/pls/apex/f?p=2143:LOGIN:116914021916965" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Личный&nbspкабинет</a>
   <a href="../Sport" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >Дисциплины</a>
-  <a href=""onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Персоналии</a>
+  <a href="<%= url_for :model => :Main, :action => :person %>"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Персоналии</a>
   <a href="#"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Расписание</a>
-  <a href="../Contacts" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Контакты</a>
+  <a href="2" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Контакты</a>
 
   <a href="http://www.ifmo.ru/ru/"><img style="width: 250px; height: 80px;margin-left:-35px;" src="../image/slogan_r.png"></a>
 </div>
 <script>
     function openNav() {
-        document.getElementById("mySidenav").style.width = "280px";
+        document.getElementById("mySidenav").style.width = "250px";
     }
 
     function closeNav() {
@@ -137,28 +135,51 @@
 </script>
 <div class="header">
   <span style="font-size:30px;cursor:pointer;margin:15px;color:white;background-color:#1D2C4A;float:left;" onclick="openNav()">&#9776;</span>
-  <h2 style="align:center; font-family: ITMO Muller Black;color: white;font-size: 30px;margin-top: 20px;" >Персоналии</h2>
+  <h2 style="align:center;" >Контакты</h2>
 </div>
 
 
 <div class="info">
-  <h3 style="font-size: 25px;margin-top: 20px;">Наши преподаватели:</h3>
+  <h3>Как с нами связаться:</h3>
 </div>
 <div class="content">
-  <div class="card border-secondary mb-3" style="max-width: 540px;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img src="../image/ivanov.jpeg" class="card-img" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h4 class="card-title">Иванов С.Е.</h4>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <table class="main_table" cellpadding="15px" >
+
+
+    <tr>
+      <td><i class="fab fa-instagram"></i></td>
+      <td><a href="https://instagram.com/kronbars" >Наш Instagram</a></td>
+      <td>
+
+      </td>
+    </tr>
+    <tr>
+      <td><i class="fab fa-vk"></i></td>
+      <td><a href="https://vk.com/kronbars" >Мы Vkontakte</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><i class="fab fa-facebook-square"></i></td>
+      <td><a href="https://m.facebook.com/kronbars" >Наш Facebook</a></td>
+
+    </tr>
+    <tr>
+      <td><i class="fa fa-phone" aria-hidden="true"></i></td>
+      <td><a href="tel:+78125756905">+7 (812) 575-69-05</a></td>
+    </tr>
+    <tr>
+      <td> <i class="fa fa-map-marker" aria-hidden="true"></i></td>
+      <td><a href="https://yandex.ru/maps/-/CBB8FKBmWB">ул. Ломоносова, 9, каб. 4401</a></td>
+    </tr>
+
+
+
+
+
+    <!--      <td><img src="Contacts\img\inst.png"></td>-->
+
+
+  </table>
 
 </div>
 
@@ -167,3 +188,4 @@
 
 </div>
 </html>
+

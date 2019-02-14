@@ -4,6 +4,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,9 +74,10 @@
       width: auto;
       padding:15px;
       padding-left:30px;
+      padding-bottom: 50px;
     }
     .footer{
-      position: absolute;
+      position: fixed;
       left: 0;
       bottom: 0;
       width: 100%;
@@ -93,7 +95,7 @@
 
     }
     a{
-      margin-left: 35px;
+
       color: black;
     }
     a:hover{
@@ -115,10 +117,10 @@
 <body>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="../index.erb" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >На&nbspглавную</a>
+  <a href="<%= url_for :model => :Main,:action => :index %>" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >На&nbspглавную</a>
   <a href="https://isu.ifmo.ru/pls/apex/f?p=2143:LOGIN:116914021916965" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Личный&nbspкабинет</a>
   <a href="Sport" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >Дисциплины</a>
-  <a href="<%= url_for :model => :Contacts,:action => :person %>"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Персоналии</a>
+  <a href="<%= url_for :model => :Main,:action => :person %>"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Персоналии</a>
   <a href="#"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Расписание</a>
   <a href="Contacts" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Контакты</a>
 
@@ -126,12 +128,13 @@
 </div>
 <script>
     function openNav() {
-        document.getElementById("mySidenav").style.width = "280px";
+        document.getElementById("mySidenav").style.width = "250px";
     }
 
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+
 </script>
 <div class="header">
   <span style="font-size:30px;cursor:pointer;margin:15px;color:white;background-color:#1D2C4A;float:left;" onclick="openNav()">&#9776;</span>
@@ -212,13 +215,13 @@
     </div>
     <div class="card">
       <button class=" btn btn-light collapsed " style="padding: 0;margin-bottom: -2px;" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-      <div class="card-header "  id="headingThree" style="margin: 0;">
-        <h4 class="mb-0">
+        <div class="card-header "  id="headingThree" style="margin: 0;">
+          <h4 class="mb-0">
 
             Альпийский переулок, д. 15, к. 2, лит. А
 
-        </h4>
-      </div>
+          </h4>
+        </div>
       </button>
       <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
         <div class="card-body">
