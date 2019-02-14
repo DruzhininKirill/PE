@@ -118,6 +118,13 @@
     i {
       font-size: 25px;
     }
+    .card{
+      margin: 25% auto;
+    }
+    .med{
+      font-size: medium;
+    }
+
 
 
 
@@ -140,20 +147,19 @@
 
 
 <!--<form method="POST" action="https://calm-brook-51137.herokuapp.com/sport/">-->
-  <div class="card bg-light" style="border-radius: 20px; padding: 20px; max-width: 200px;max-height:200px;position: absolute;top:20%;left:20%;">
+<div class="card bg-light" style="border-radius: 20px; padding: 40px 20px; width:70%;height:80%;position: relative;">
 
-    <form class="" method="POST" style="max-width: 150px;" action="<%= url_for :model => :Main, :action => :auth %>">
-      <div class="form-group" >
-        <label >Логин</label>
-        <input type="text" id="login" name="login" class="form-control" placeholder="Логин"/>
-      </div>
-      <div class="form-group">
-        <label>Пароль</label>
-        <input type="text" id="password" name="password" class="form-control" placeholder="Пароль"/>
-      </div>
-      <button type="submit" style="width: 100%;" class="btn btn-danger">Войти</button>
-    </form>
-    <a href="Main" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Контакты</a>
-  </div>
+  <form class="" method="POST" style="" action="<%= url_for :model => :Main, :action => :auth %>">
+    <div class="form-group" >
+      <label class="med">Логин</label>
+      <input type="text" style="height: 30px;font-size: medium;font-weight: bolder" id="login" name="login" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label class="med">Пароль</label>
+      <input type="password" style="height: 30px;font-size: large;font-weight: bold;" id="password" name="password" class="form-control" />
+    </div>
+    <button type="submit" style="width: 100%; height: 40px; margin-top: 10px; " class="btn btn-danger med">Войти</button>
+  </form>
+</div>
 
 </body>

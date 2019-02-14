@@ -70,6 +70,7 @@
       width: auto;
       padding:15px;
       padding-left:30px;
+      margin-bottom: 50px;
     }
     .footer{
       position: fixed;
@@ -116,7 +117,6 @@
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="<%= url_for :model => :Main, :action => :index %>" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >На&nbspглавную</a>
-  <a href="https://isu.ifmo.ru/pls/apex/f?p=2143:LOGIN:116914021916965" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Личный&nbspкабинет</a>
   <a href="../Sport" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >Дисциплины</a>
   <a href="<%= url_for :model => :Main, :action => :person %>"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Персоналии</a>
   <a href="#"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Расписание</a>

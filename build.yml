@@ -125,7 +125,7 @@ win32:
   deploymsvc: 1
 
 extensions:
-  ["net-http", "thread", "timeout", "uri"]
+  ["net-http", "thread", "timeout", "uri", "json"]
 
 
 rhobundle:
