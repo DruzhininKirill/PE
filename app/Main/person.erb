@@ -169,42 +169,66 @@
   <h3 style="font-size: 25px;margin-top: 20px;">Наши преподаватели:</h3>
 </div>
 <div class="content">
+  <% @personss = ["Иванов С.Е.", "Евтеев А.В." , "Богович Д. Н."] %>
+  <% @rolee = ["Доцент кафедры программных систем", "Старший преподаватель, Управление по физической культуре и спорту", "Менеджер, Управление по физической культуре и спорту"] %>
+  <% @opisaniee = ["•    образование высшее, инженер-математик по специальности прикладная  математика. В 1998 г. окончил дневное отделение СПб ГМТУ, кафедра прикладной математики;
+•    1998 - 2007 г. инженер-программист ФГУП “СПКБ”;
+•    лауреат Всероссийского конкурса “Инженер года” 2005 г., диплом профессионального инженера России;
+•    с 2007 г. по настоящее время доцент Санкт-Петербургского национального исследовательского Университета ИТМО;
+•    международные сертификаты: преподавателя Microsoft (MCT), профессионала Microsoft (MCP), эксперта Microsoft Office Expert, Oracle Certification Status Oracle Database 11g Administrator Certified;
+•    опубликовано 45 научных работ в области математического моделирования, из них 17 статей опубликованы в ведущих рецензируемых научных журналах и изданиях, определенных ВАК, 17 статей опубликованы в международных изданиях, индексируемых в SCOPUS, Web of Science и имеют международные ссылки.
+Индекс Хирша в SCOPUS – 7;
+•    автор online курса открытого образования ведущих вузов России “Модели и методы аналитической механики” (2016 г.)", "Кандидат в мастера спорта по армейскому рукопашному бою, увлекаюсь игровыми видами спорта", "Руководитель направления, Студенческий спортивный клуб Кронверкские барсы
+ Фотограф, Студенческого спортивный клуб Кронверкские барсы"] %>
+  <% @i=0 %>
+  <%while @i< @personss.length do %>
+    <div class="card accordion" id="accordionExample" style="max-width: 740px;border-radius: 20px;margin-right: 15px; margin-bottom: 20px">
 
-  <div class="card accordion" id="accordionExample" style="max-width: 740px;border-radius: 20px;margin-right: 15px;">
-    <div style="max-width: 740px;" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-      <div class="card-header bg-light " style="margin-bottom: 0px;border-radius: 20px;min-height: 160px;">
+      <% @headi2 = "heading"+@i.to_s %>
+      <% @cola2 = "collapse"+@i.to_s %>
+      <% @colat2 = "#collapse"+@i.to_s %>
+      <div style="max-width: 740px;"  data-toggle="collapse" aria-expanded="false" id=<%= @headi2 %> aria-controls=<%= @cola2 %> data-target=<%= @colat2 %>>
+        <div class="card-header bg-light " style="margin-bottom: 0px;border-radius: 20px;min-height: 160px;" id=<%= @headi2 %>>
 
 
-        <div class="col-md-12" style="padding: 20px;padding-left: 5px;">
-          <div class="box" style="padding: 0px;position: absolute;top:0;left:0; " >
-            <img src="../image/ivanov.jpeg" style="width: 120px;height:142px;border-radius: 20px;">
+          <div class="col-md-12" style="padding: 20px;padding-left: 5px;">
+            <div class="box" style="padding: 0px;position: absolute;top:0;left:0; " >
+              <% if @personss[@i] == "Иванов С.Е."; %>
+                <img src="../image/ivanov.jpeg" style="width: 120px;height:142px;border-radius: 20px;">
+              <%   elsif @personss[@i] == "Евтеев А.В.";%>
+                <img src="../image/eft.jpg" style="width: 120px;height:142px;border-radius: 20px;">
+              <%   elsif @personss[@i] == "Богович Д. Н.";%>
+                <img src="../image/bogov.jpg" style="width: 120px;height:142px;border-radius: 20px;">
+
+              <% end %>
+
+            </div>
+            <div  style="max-width: 200px;margin-left: 140px;">
+
+              <p class="" style="font-family: ITMO Muller Regular;font-weight: bolder;font-size: large;">
+                <%= @personss[@i] %>
+              </p>
+              <p  style="font-size: medium;" >
+                <%= @rolee[@i] %>
+              </p>
+
+            </div>
+
+
+
+
           </div>
-          <div  style="max-width: 200px;margin-left: 140px;">
-
-            <p class="" style="font-family: ITMO Muller Regular;font-weight: bolder;font-size: large;">Иванов
-              С.Е.
-            </p>
-            <p  style="font-size: medium;" >Доцент кафедры программных систем </p>
-
+        </div>
+        <div id=<%= @cola2 %> class="collapse" aria-labelledby=<%= @headi2 %> data-parent="#accordionExample">
+          <div class="card-body" style="font-size: medium">
+            <%= @opisaniee[@i] %>
           </div>
-
-
-
-
         </div>
       </div>
-      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-          officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-          moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
-          keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-          butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
-          haven't heard of them accusamus labore sustainable VHS.
-        </div>
-      </div>
+      <% @i += 1 %>
+
     </div>
-  </div>
+  <% end %>
 
 </div>
 

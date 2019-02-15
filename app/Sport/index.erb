@@ -145,107 +145,45 @@
 
 </div>
 <div class="content">
+
+
+  <% @lessonss = ["Мини-футбол", "Баскетбол", "Флорбол", "Волейбол", "Легкая атлетика", "Бадминтон", "Настольный теннис", "Скалолазание", "Алтимат-фрисби", "Художественная гимнастика", "Большой теннис", "Спортивное ориентирование", "Каратэ", "Спортивный туризм", "Регби-7", "Гиревой спорт", "Бокс", "Дартс", "Бильярд", "Шашки", "Шахматы"]; %>
+  <% @opisanie = ["Ми́ни-футбо́л — широко распространённое в русскоязычных странах наименование футза́ла ФИФА — командного вида спорта, одной из разновидностей футбола", "Баскетбо́л — спортивная командная игра с мячом, в которой мяч забрасывают руками в корзину (кольцо) соперника.", "Флорбо́л или хоккей в зале — командный вид спорта из семейства хоккеев. Играется в закрытых помещениях на твёрдом ровном полу пластиковым мячом, удары по которому наносятся специальной клюшкой. Цель игры: забить мяч в ворота соперника.","Волейбо́л — вид спорта, командная спортивная игра, в процессе которой две команды соревнуются на специальной площадке, разделённой сеткой, стремясь направить мяч на сторону соперника таким образом, чтобы он приземлился на площадке противника ", "Лёгкая атле́тика — олимпийский вид спорта, включающий бег, ходьбу, прыжки и метания. Объединяет следующие дисциплины: беговые виды, спортивную ходьбу, технические виды (прыжки и метания), многоборья, пробеги (бег по шоссе) и кроссы (бег по пересечённой местности).", "Бадминтон — вид спорта, в котором игроки располагаются на противоположных сторонах разделённой сеткой площадки и перекидывают волан через сетку ударами ракеток, стремясь приземлить волан на стороне противника и, наоборот, чтобы он не упал на собственное поле.", "Настольный теннис", "Скалолазание", "Алтимат-фрисби", "Художественная гимнастика", "Большой теннис", "Спортивное ориентирование", "Каратэ", "Спортивный туризм", "Регби-7", "Гиревой спорт", "Бокс", "Дартс", "Бильярд", "Шашки", "Шахматы"]; %>
+  <% @i=0 %>
   <div class="accordion" id="accordionExample" style="margin-right: 15px;">
-    <div class="card">
-      <button class=" btn btn-light collapsed " style="padding: 0;margin-bottom: -2px;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        <div class="card-header "  id="headingOne" style="margin: 0;">
-          <h4 class="mb-0">
+    <%while @i< @lessonss.length do %>
+      <% @headi = "heading"+@i.to_s %>
+      <% @cola = "collapse"+@i.to_s %>
+      <% @colat = "#collapse"+@i.to_s %>
+      <div class="card">
+        <button class=" btn btn-light collapsed " style="padding: 0;margin-bottom: -2px;" data-toggle="collapse"  aria-expanded="false" aria-controls=<%= @cola %> data-target=<%= @colat %>>
+          <div class="card-header "   style="margin:0;" id=<%= @headi %>>
+            <h4 class="mb-0" style="font-size: large">
 
-            Вяземский переулок, д. 5/7
+              <%= @lessonss[@i] %>
 
-          </h4>
-        </div>
-      </button>
+            </h4>
+          </div>
+        </button>
 
-      <div id="collapseOne" style="padding: 0px;"class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="">
-        <div class="card-body" style="padding: 0px;">
-          <div class="card" style="width: 100%;margin: 0px;">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Мини-футбол </li>
-              <li class="list-group-item">Баскетбол</li>
-              <li class="list-group-item">Волейбол</li>
-              <li class="list-group-item">Легкая атлетика</li>
-              <li class="list-group-item">Физическая культура</li>
-              <li class="list-group-item">Бадминтон</li>
-              <li class="list-group-item">Настольный теннис</li>
-              <li class="list-group-item">Скалолазание</li>
-              <li class="list-group-item">Алтимат-фрисби</li>
-              <li class="list-group-item">Художественная гимнастика</li>
-              <li class="list-group-item">Большой теннис</li>
-              <li class="list-group-item">Спортивное ориентирование</li>
-              <li class="list-group-item">Каратэ</li>
-              <li class="list-group-item">Мини-футбол (ж)</li>
-              <li class="list-group-item">Спортивный туризм</li>
-              <li class="list-group-item">Регби-7</li>
-              <li class="list-group-item">Фитнес</li>
-              <li class="list-group-item">Физическая культура</li>
-              <li class="list-group-item">Адаптивная и лечебная физическая культура</li>
-              <li class="list-group-item">Гиревой спорт</li>
-              <li class="list-group-item">Бокс</li>
-              <li class="list-group-item">Фитнес</li>
-              <li class="list-group-item">Фитбоксинг</li>
-              <li class="list-group-item">Дартс</li>
-              <li class="list-group-item">Бильярд</li>
-              <li class="list-group-item">Шашки</li>
-              <li class="list-group-item">Шахматы</li>
-              <li class="list-group-item">Йога (аштанга-йога)</li>
-              <li class="list-group-item">Современные танцы</li>
+        <div  style="padding:0px;" class="collapse"  data-parent="#accordionExample" id=<%= @cola %> aria-labelledby=<%= @headi %>>
+          <div class="card-body" style="padding: 0px;">
+            <div class="card" style="width: 100%;margin: 0px;">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" style="font-size: medium"><%= @opisanie[@i] %> </li>
+                <% if @lessonss[@i] == "Флорбол"; %>
 
-            </ul>
+                <% end %>
+
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="card">
-      <button class=" btn btn-light collapsed " style="padding: 0;margin-bottom: -2px;" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        <div class="card-header "  id="headingTwo" style="margin: 0;">
-          <h4 class="mb-0">
+      <% @i += 1 %>
+    <% end %>
 
-            ул. Ломоносова, д. 9
-
-          </h4>
-        </div>
-      </button>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <button class=" btn btn-light collapsed " style="padding: 0;margin-bottom: -2px;" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        <div class="card-header "  id="headingThree" style="margin: 0;">
-          <h4 class="mb-0">
-
-            Альпийский переулок, д. 15, к. 2, лит. А
-
-          </h4>
-        </div>
-      </button>
-      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <button class=" btn btn-light collapsed " style="padding: 0;margin-bottom: -2px;color:black;text-underline: none;" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-        <div class="card-header "  id="headingFour" style="margin: 0;">
-          <h4 class="mb-0">
-
-            Другие спортивные объекты
-
-          </h4>
-        </div>
-      </button>
-      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-        </div>
-      </div>
-    </div>
   </div>
-
 </div>
 
 </body>

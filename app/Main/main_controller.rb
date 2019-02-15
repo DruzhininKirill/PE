@@ -262,6 +262,14 @@ class MainController < Rho::RhoController
     puts "CASHA♥♥" + response.body
     data = response.body.to_s
     obj = eval(response.body.to_s)
+    @mass = Array.new
+    @mass = obj[:clsn]
+    puts "!!!!!MASS " + @mass.to_s
+
+  end
+
+  def addpoints
+    puts "PARAAAMMMSS " + @params.to_s
     render
   end
 

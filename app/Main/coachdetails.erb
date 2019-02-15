@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+
+    @font-face {
+      font-family: "ITMO Muller Regular";
+      src: url('../../../../public/bootstrap-3.3.7/fonts/MullerRegular.ttf');
+    }
+    @font-face {
+      font-family: "ITMO Muller Black";
+      src: url('../../../../public/bootstrap-3.3.7/fonts/MullerBlack.ttf');
+    }
+    body {
+      font-family: "ITMO Muller Regular";
+
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #1D2C4A;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+    .header{
+      background-color: #1D2C4A;
+      height:120px;
+      padding: 15px;
+    }
+    h2{
+      font-family: ITMO Muller Black;
+      color: white;
+    }
+    h3{
+      font-family: ITMO Muller Black;
+      margin-left: 30px;
+    }
+    .content{
+      width: auto;
+      padding:15px;
+      padding-left:30px;
+      padding-bottom: 50px;
+
+    }
+    .footer{
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 30px;
+      background-color: #1D2C4A;
+      margin-top: 250px;
+    }
+    .info{
+      height:50px;
+      width: auto;
+    }
+    .dif3{
+      background-color: #cc444a;
+    }
+    .dif2{
+      background-color: #297ef6;
+    }
+    .dif1{
+      background-color: #53a351;
+    }
+
+
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+  </style>
+
+</head>
+<body>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#"></a>
+  <a href="<%= url_for :model => :Main,:action => :coachpage %>" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >На главную</a>
+
+
+  <a href="http://www.ifmo.ru/ru/"><img style="width: 250px; height: 80px;margin-left:-35px;" src="../image/slogan_r.png"></a>
+</div>
+<div class="header">
+  <span style="font-size:30px;cursor:pointer;margin:15px;color:white;background-color:#1D2C4A;float:left;" onclick="openNav()">&#9776;</span>
+  <h2 style="align:center; font-family: ITMO Muller Black;color: white;font-size: 30px;margin-top: 20px;" >ИТМО Тренер</h2>
+</div>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+  <div class="info">
+  </div>
+  <div class="content">
+
+
+
+    <% @name = "heading" %>
+    <% @namecol = "collapse" %>
+    <% @nametar = "#collapse" %>
+
+          <%#@classhard = "dif" + lesson[:lvl].to_s %>
+          <div class="card accordion"   style=" max-width: 740px;border-radius: 20px;margin-right: 15px; margin-bottom: 15px;">
+            <div style="max-width: 740px;" id="ident" data-toggle="collapse" aria-expanded="false">
+              <div class="card-header" style="border-radius: 20px;height: 60px;padding: 8px;color:white;background-color: #1D2C4A;font-size: medium;">
+
+
+                <div class="col-md-12" style="padding: 10px;padding-left: 5px;">
+
+                  <div >
+                      <p  ><%= @mass[:sport] %></p>
+                   </div>
+                </div>
+              </div>
+
+              <div class="collapsed" aria-labelledby="ident" data-parent="#ex"  >
+                <div class="card-body" >
+                    <form method="post" action="<%= url_for :model => :Main, :action => :addpoints %>">
+
+
+                  <% @mass[:stud].each do |student| %>
+                    <p  style="font-size: medium;" >
+                      <%= student[:name] %>
+                      <%= student[:surname] %>
+                      <input type="hidden" id="studentid" value=<%= student[:id] %> />
+                      <input type="submit"  value="+5"  class="btn btn-success"  style="float: right;" id='studentid'>
+                    </p>
+                        </form>
+                  <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+    </div>
+
+  </div>
+</body>
+<div class="footer">
+
+</div>

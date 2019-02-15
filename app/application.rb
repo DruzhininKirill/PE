@@ -8,7 +8,7 @@ class AppApplication < Rho::RhoApplication
     @tabs = nil
 
     #To remove default toolbar uncomment next line:
-    # @@toolbar = nil
+    @@toolbar = nil
     super
 
 
