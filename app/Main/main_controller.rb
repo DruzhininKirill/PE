@@ -72,7 +72,13 @@ class MainController < Rho::RhoController
     response = http.request(request)
     puts "CASHA♥♥" + response.body
     data = response.body.to_s
-    if data == '{"aut": "user"}'
+    obj = eval(data)
+    mass = obj[:aut]
+    puts "massss "+mass.to_s
+    if mass[0] == "user"
+      puts "WE IN"
+      $session[:name] = mass[1][:name]
+      $session[:surname] = mass[1][:surname]
       $session[:login] = @login
       $session[:password] = @password
 
@@ -150,6 +156,58 @@ class MainController < Rho::RhoController
 
     puts "!!!!array: " + @lessons.to_s
     render :back => '/app'
+  end
+
+  def joinlesson
+    @login = $session[:login]
+    @password = $session[:password]
+    uri = URI.parse("http://calm-brook-51137.herokuapp.com/sport/dolesson/")
+    puts "PARAMS" + @params.to_s
+    puts @params['member']
+    if @params['member']=='true'
+      dom = 'del'
+    else
+      dom = 'join'
+    end
+
+    dataforserver =
+        {:user=> {
+            :login=> @login,
+            :password=> @password},
+         :lesson=>{:id=> @params['lessonid'], :do => dom}
+
+
+        }
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.body = dataforserver.to_json
+    response = http.request(request)
+    puts "CASHA♥♥" + response.body
+    data = response.body.to_s
+    obj = eval(response.body.to_s)
+    if obj[:dlsn] == "maxlessons"
+      Rho::Notification.showPopup({
+                                      :title => "Message from server",
+                                      :message => "Превышено количество дисциплин(3)",
+                                      :buttons => ["Продолжить"]})
+    end
+    if obj[:dlsn] == "success"
+      Rho::Notification.showPopup({
+                                      :title => "Message from server",
+                                      :message => "Вы успешно записались на дисциплину",
+                                      :buttons => ["Продолжить"]})
+    end
+    if obj[:dlsn] == "del_success"
+      Rho::Notification.showPopup({
+                                      :title => "Message from server",
+                                      :message => "Вы успешно отписались от дисциплины",
+                                      :buttons => ["Продолжить"]})
+    end
+
+
+
+    redirect :model => :Main, :action=> :index
   end
 
 

@@ -73,10 +73,11 @@
       margin-left: 30px;
     }
     .content{
-      height:300px;
       width: auto;
       padding:15px;
       padding-left:30px;
+      padding-bottom: 50px;
+
     }
     .footer{
       position: fixed;
@@ -85,15 +86,20 @@
       width: 100%;
       height: 30px;
       background-color: #1D2C4A;
+      margin-top: 250px;
     }
     .info{
       height:50px;
       width: auto;
     }
-    .main_table{
-      width: auto;
-      height:270px;
-
+   .dif3{
+     background-color: #cc444a;
+   }
+    .dif2{
+      background-color: #297ef6;
+    }
+    .dif1{
+      background-color: #53a351;
     }
 
 
@@ -112,7 +118,7 @@
   <a href="<%= url_for :model => :Main, :action => :index %>" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >На&nbspглавную</a>
   <a href="<%= url_for :model => :Sport,:action => :index %>" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >Дисциплины</a>
   <a href="<%= url_for :model => :Main,:action => :person %>"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Персоналии</a>
-  <a href="<%= url_for :model => :Main,:action => :getlesson %>"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Расписание</a>
+  <a href="<%= url_for :model => :Main,:action => :getlesson %>"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Запись</a>
   <a href="<%= url_for :model => :Main,:action => :contact %>" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Контакты</a>
 
   <a href="http://www.ifmo.ru/ru/"><img style="width: 250px; height: 80px;margin-left:-35px;" src="../image/slogan_r.png"></a>
@@ -147,46 +153,66 @@
   <% @nametar = "#collapse" %>
   <div class=" accordion" id="ex">
     <% @schedule.each do |lesson| %>
+      <form method="post" action="<%= url_for :model => :Main, :action => :joinlesson %>" >
+        <input type="hidden">
       <% @name = @name+ lesson[:id].to_s %>
       <% @namecol = @namecol+ lesson[:id].to_s %>
       <% @nametar = @nametar+ lesson[:id].to_s %>
-
-      <div class="card accordion bg-light"   style=" max-width: 740px;border-radius: 20px;margin-right: 15px; margin-bottom: 15px;">
+      <% @classhard = "dif" + lesson[:lvl].to_s %>
+      <div class="card accordion"    style=" max-width: 740px;border-radius: 20px;margin-right: 15px; margin-bottom: 15px;" >
         <div style="max-width: 740px;" id=<%= @name %> data-toggle="collapse" data-target=<%= @nametar %> aria-expanded="false" aria-controls=<%= @namecol %>>
-          <div class="card-header " style="border-radius: 20px;height: 60px;">
+          <div class="card <%= @classhard %>" style="border-radius: 20px;height: 60px;padding: 8px;color:white;" >
 
 
             <div class="col-md-12" style="padding: 10px;padding-left: 5px;">
 
-              <div style="max-width: 200px;">
+              <div >
 
-                <p class="" style="font-family: ITMO Muller Regular;font-weight: bolder;font-size: large;color:white;"><%= lesson[:sport] %></p>
+                <p class="" style="font-family: ITMO Muller Regular;font-weight: bolder;font-size: large;color:white;width: auto;"><%= lesson[:sport] %><span style="float: right;font-size: small;"><%= lesson[:wday] %>&nbsp<%= lesson[:tday] %></span></p>
               </div>
             </div>
           </div>
 
-
-
+          <input type="hidden" style="height: 30px;font-size: medium;font-weight: bolder" id="lessonid" name="lessonid" class="form-control" value=<%=lesson[:id]%> />
+          <input type="hidden" style="height: 30px;font-size: medium;font-weight: bolder" id="member" name="member" class="form-control" value=<%=lesson[:member]%> />
 
 
 
           <div id=<%= @namecol %> class="collapse" aria-labelledby=<%= @name %> data-parent="#ex"  >
             <div class="card-body" >
-              <p style="font-size: medium;color:white;">
+              <p style="font-size: medium;">
                 Место:&nbsp<%= lesson[:place][:name] %>
               </p>
-              <p style="font-size: medium;color:white;">
+              <p style="font-size: medium;">
                 Время:&nbsp<%= lesson[:wday] %>&nbsp<%= lesson[:tday] %>
               </p >
-              <p style="font-size: medium;color:white;">
+              <p style="font-size: medium;">
                 Тренер:&nbsp<%= lesson[:coach][:name] %>&nbsp<%= lesson[:coach][:surname] %>
               </p>
+              <p style="font-size: medium;">
+                Количество мест:&nbsp<%= lesson[:countnow] %>/<%= lesson[:countmax] %>
+              </p>
+              <p>
+                  <%if lesson[:member]==true %>
+                  <button class="btn btn-primary"type="submit" style="font-size: medium;" >Отписаться</button>
+                  <% else %>
+                  <% if lesson[:countnow]!=0  %>
+                    <button class="btn btn-success"type="submit" style="font-size: medium;" >Записаться</button>
+                  <% else %>
+                    <button class="btn btn-danger"  disabled style="font-size: medium;">Нет мест</button>
+                  <% end %>
+                  <% end %>
+
+              </p>
+
 
             </div>
           </div>
         </div>
       </div>
+      </form>
     <% end %>
+
   </div>
 
 </div>
