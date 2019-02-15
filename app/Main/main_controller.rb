@@ -72,18 +72,17 @@ class MainController < Rho::RhoController
     response = http.request(request)
     puts "CASHA♥♥" + response.body
     data = response.body.to_s
-    if data == '{"aut": "accept"}'
+    if data == '{"aut": "user"}'
       $session[:login] = @login
       $session[:password] = @password
 
       redirect :action => :index
 
-    elsif data == '{"aut": "accept_as_admin"}'
+    elsif data == '{"aut": "admin"}'
       $session[:login] = @login
       $session[:password] = @password
       redirect :action => :adminpage
 
-      redirect :action => :index
     else
       Rho::Notification.showPopup({
         :title => "Error",
@@ -98,12 +97,68 @@ class MainController < Rho::RhoController
     render :action => :newuser
   end
 
+  def createuser
+    @login = $session[:login]
+    @password = $session[:password]
+    uri = URI.parse("http://calm-brook-51137.herokuapp.com/sport/admin/")
 
 
+    dataforserver =
+        {:user=> {
+            :login=> @login,
+            :password=> @password},
+        :newuser=>{
+            :tabnum=> @params['tabnum'],
+            :password=> @params['password'],
+            :name=> @params['name'],
+            :surname=> @params['surname'],
+            :email=> @params['email'],
+            :group=> @params['group']}
+        }
 
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.body = dataforserver.to_json
+    response = http.request(request)
+    puts "CASHA♥♥" + response.body
+    data = response.body.to_s
+
+      Rho::Notification.showPopup({
+                                      :title => "Message from server",
+                                      :message => data,
+                                      :buttons => ["Continue"]})
+
+      redirect :model => '', :action=> :index
+  end
+
+  def getlesson
+    uri = URI.parse("http://calm-brook-51137.herokuapp.com/sport/getlesson/")
+    user = {:user=> {
+        :login=> $session[:login],
+        :password=> $session[:password]
+    }
+    }
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.body = user.to_json
+    response = http.request(request)
+    puts "CASHA♥♥" + response.body
+    obj = eval(response.body.to_s)
+    data = obj[:gtlsn].to_s
+    $session[:lessons] = obj[:gtlsn]
+    @schedule = obj[:gtlsn]
+
+    puts "!!!!array: " + @lessons.to_s
+    render :back => '/app'
+  end
 
 
   end
+
+
+
+
+
 
 
 

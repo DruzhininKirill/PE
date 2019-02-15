@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <form method="POST" action="sanyalink">
+  <form method="POST" action="<%= url_for :model => :Main, :action => :createuser %>">
 
     <div class="form-group">
       <label for="tabnum">tabnum</label>
@@ -21,7 +21,7 @@
 
     <div class="form-group">
       <label for="password">password</label>
-      <input type="password" id="password]" name="lesson[time]" <%=
+      <input type="password" id="password" name="password" <%=
         placeholder("default password") %> class="form-control" />
     </div>
 
@@ -35,6 +35,18 @@
       <label for="surname">surname</label>
       <input type="surname" id="surname" name="surname" <%=
         placeholder("surname") %> class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="email">email</label>
+      <input type="email" id="email" name="email" <%=
+        placeholder("email") %> class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="group">group</label>
+      <input type="group" id="group" name="group" <%=
+        placeholder("group") %> class="form-control" />
     </div>
 
 

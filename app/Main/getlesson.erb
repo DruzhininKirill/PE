@@ -109,13 +109,13 @@
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#"></a>
+  <a href="<%= url_for :model => :Main, :action => :index %>" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >На&nbspглавную</a>
   <a href="<%= url_for :model => :Sport,:action => :index %>" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'" >Дисциплины</a>
   <a href="<%= url_for :model => :Main,:action => :person %>"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Персоналии</a>
   <a href="<%= url_for :model => :Main,:action => :getlesson %>"onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Расписание</a>
   <a href="<%= url_for :model => :Main,:action => :contact %>" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor ='#1D2C4A'">Контакты</a>
 
-  <a href="http://www.ifmo.ru/ru/"><img style="width: 250px; height: 80px;margin-left:-35px;" src="image/slogan_r.png"></a>
+  <a href="http://www.ifmo.ru/ru/"><img style="width: 250px; height: 80px;margin-left:-35px;" src="../image/slogan_r.png"></a>
 </div>
 <div class="header">
   <span style="font-size:30px;cursor:pointer;margin:15px;color:white;background-color:#1D2C4A;float:left;" onclick="openNav()">&#9776;</span>
@@ -133,19 +133,9 @@
 </script>
 <script type="text/javascript" src="https://vk.com/js/api/openapi.js?160"></script>
 <div class="info">
-  <h3 style="font-size: 25px;margin-top: 20px;">Ваше расписание:</h3>
-
-
-
+  <h3 style="font-size: 25px;margin-top: 20px;"> Расписание занятий:</h3>
 
 </div>
-
-
-
-
-
-
-
 
 </div>
 <div class="content">
@@ -156,54 +146,49 @@
   <% @namecol = "collapse" %>
   <% @nametar = "#collapse" %>
   <div class=" accordion" id="ex">
-  <% @lessons.each do |lesson| %>
-    <% @name = @name+ lesson[:id].to_s %>
-    <% @namecol = @namecol+ lesson[:id].to_s %>
-    <% @nametar = @nametar+ lesson[:id].to_s %>
+    <% @schedule.each do |lesson| %>
+      <% @name = @name+ lesson[:id].to_s %>
+      <% @namecol = @namecol+ lesson[:id].to_s %>
+      <% @nametar = @nametar+ lesson[:id].to_s %>
 
-  <div class="card accordion"   style="background-color: #5677c6; max-width: 740px;border-radius: 20px;margin-right: 15px; margin-bottom: 15px;">
-    <div style="max-width: 740px;" id=<%= @name %> data-toggle="collapse" data-target=<%= @nametar %> aria-expanded="false" aria-controls=<%= @namecol %>>
-      <div class="card-header " style="border-radius: 20px;height: 60px;background-color: #da3248;">
+      <div class="card accordion bg-light"   style=" max-width: 740px;border-radius: 20px;margin-right: 15px; margin-bottom: 15px;">
+        <div style="max-width: 740px;" id=<%= @name %> data-toggle="collapse" data-target=<%= @nametar %> aria-expanded="false" aria-controls=<%= @namecol %>>
+          <div class="card-header " style="border-radius: 20px;height: 60px;">
 
 
-        <div class="col-md-12" style="padding: 10px;padding-left: 5px;">
+            <div class="col-md-12" style="padding: 10px;padding-left: 5px;">
 
-          <div style="max-width: 200px;">
+              <div style="max-width: 200px;">
 
-            <p class="" style="font-family: ITMO Muller Regular;font-weight: bolder;font-size: large;color:white;"><%= lesson[:sport] %></p>
+                <p class="" style="font-family: ITMO Muller Regular;font-weight: bolder;font-size: large;color:white;"><%= lesson[:sport] %></p>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+          <div id=<%= @namecol %> class="collapse" aria-labelledby=<%= @name %> data-parent="#ex"  >
+            <div class="card-body" >
+              <p style="font-size: medium;color:white;">
+                Место:&nbsp<%= lesson[:place][:name] %>
+              </p>
+              <p style="font-size: medium;color:white;">
+                Время:&nbsp<%= lesson[:wday] %>&nbsp<%= lesson[:tday] %>
+              </p >
+              <p style="font-size: medium;color:white;">
+                Тренер:&nbsp<%= lesson[:coach][:name] %>&nbsp<%= lesson[:coach][:surname] %>
+              </p>
+
+            </div>
           </div>
         </div>
       </div>
-
-
-
-
-
-
-      <div id=<%= @namecol %> class="collapse" aria-labelledby=<%= @name %> data-parent="#ex"  >
-        <div class="card-body" >
-          <p style="font-size: medium;color:white;">
-            Место:&nbsp<%= lesson[:place][:name] %>
-          </p>
-          <p style="font-size: medium;color:white;">
-            Время:&nbsp<%= lesson[:wday] %>&nbsp<%= lesson[:tday] %>
-          </p >
-          <p style="font-size: medium;color:white;">
-            Тренер:&nbsp<%= lesson[:coach][:name] %>&nbsp<%= lesson[:coach][:surname] %>
-          </p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end %>
+    <% end %>
   </div>
 
-<!— VK Widget —>
-<div id="vk_groups" style="margin-right: 30px; margin-bottom: 50px;" ></div>
-<script type="text/javascript">
-    VK.Widgets.Group("vk_groups", {mode: 4, height: "400", width:"auto"}, 45636106);
-</script>
 </div>
 </body>
 <div class="footer">
