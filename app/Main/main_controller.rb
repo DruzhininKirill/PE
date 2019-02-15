@@ -81,13 +81,22 @@ class MainController < Rho::RhoController
       $session[:surname] = mass[1][:surname]
       $session[:login] = @login
       $session[:password] = @password
-
       redirect :action => :index
+
+    elsif mass[0] == "coach"
+        puts "WE IN"
+        $session[:name] = mass[1][:name]
+        $session[:surname] = mass[1][:surname]
+        $session[:login] = @login
+        $session[:password] = @password
+
+        redirect :action => :coachpage
 
     elsif data == '{"aut": "admin"}'
       $session[:login] = @login
       $session[:password] = @password
       redirect :action => :adminpage
+
 
     else
       Rho::Notification.showPopup({
@@ -210,6 +219,51 @@ class MainController < Rho::RhoController
     redirect :model => :Main, :action=> :index
   end
 
+  def coachpage
+    uri = URI.parse("http://calm-brook-51137.herokuapp.com/sport/coschedule/")
+    user = {:user=> {
+        :login=> $session[:login],
+        :password=> $session[:password]
+    }
+    }
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.body = user.to_json
+    response = http.request(request)
+    puts "CASHA♥♥" + response.body
+    obj = eval(response.body.to_s)
+    data = obj[:sch].to_s
+    $session[:lessons] = obj[:sch]
+    @lessons = obj[:sch]
+
+    puts "!!!!array: "
+    render :back => '/app'
+  end
+
+  def coachdetails
+    @login = $session[:login]
+    @password = $session[:password]
+    uri = URI.parse("http://calm-brook-51137.herokuapp.com/sport/colesson/")
+    puts "PARAMS" + @params.to_s
+
+    dataforserver =
+        {:user=> {
+            :login=> @login,
+            :password=> @password},
+         :lesson=>{:id=> @params['lessonid']}
+
+
+        }
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.body = dataforserver.to_json
+    response = http.request(request)
+    puts "CASHA♥♥" + response.body
+    data = response.body.to_s
+    obj = eval(response.body.to_s)
+    render
+  end
 
   end
 
